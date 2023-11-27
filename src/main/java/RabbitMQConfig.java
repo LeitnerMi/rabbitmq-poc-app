@@ -9,10 +9,10 @@ public class RabbitMQConfig {
     @Singleton
     public CachingConnectionFactory rabbitConnectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setHost("10.244.0.21");
+        connectionFactory.setHost("hello-world.hello-world-cluster.svc.cluster.local");
         connectionFactory.setPort(5672);
-        connectionFactory.setUsername("default_user_llvo5vut93_YmhmKLql");
-        connectionFactory.setPassword("84AZH2wckx3bK3Jsg7BlHwosvIKAdq99");
+        connectionFactory.setUsername("test-user");
+        connectionFactory.setPassword("test-password");
 //        connectionFactory.setVirtualHost("/");
         return connectionFactory;
     }
