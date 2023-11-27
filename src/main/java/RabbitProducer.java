@@ -6,16 +6,16 @@ public class RabbitProducer extends org.apache.camel.builder.RouteBuilder{
 
     @Override
     public void configure() throws Exception {
+        String topic;
 
-
-//        SpringRabbitMQEndpoint endpoint = getCamelContext().getEndpoint("someURI", SpringRabbitMQEndpoint.class);
-//        endpoint.getConnectionFactory().isPublisherConfirms()
+        if (Math.random() * 2 > 1){
+            topic = "linz";
+        } else{
+            topic = "wien";
+        }
 
         from("timer://hello?period=1000")
-                .transform(simple("hello world"))
-                .to("spring-rabbitmq:test");
-
-        from("spring-rabbitmq:test?exchangeType=fanout&queues=test-queue")
-                .bean("consumerBeanBinding", "doSomething");
+                .transform(simple(String.format("Wichtige info für %s! Wert: %s", topic, Math.random())))
+                .to("spring-rabbitmq:topic-exchange?routingKey="+topic);
     }
 }
