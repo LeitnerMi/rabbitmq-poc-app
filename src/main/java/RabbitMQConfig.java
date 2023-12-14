@@ -9,7 +9,7 @@ public class RabbitMQConfig {
     @Singleton
     public CachingConnectionFactory rabbitConnectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setHost("hello-world.hello-world-cluster.svc.cluster.local");
+        connectionFactory.setHost("hello-world.rabbitmq-instance-main.svc.cluster.local");
         connectionFactory.setPort(5672);
         connectionFactory.setUsername("test-user");
         connectionFactory.setPassword("test-password");
