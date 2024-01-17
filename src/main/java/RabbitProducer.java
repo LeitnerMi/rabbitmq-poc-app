@@ -6,11 +6,6 @@ public class RabbitProducer extends org.apache.camel.builder.RouteBuilder{
 
     @Override
     public void configure() throws Exception {
-
-
-//        SpringRabbitMQEndpoint endpoint = getCamelContext().getEndpoint("someURI", SpringRabbitMQEndpoint.class);
-//        endpoint.getConnectionFactory().isPublisherConfirms()
-
         from("timer://hello?period=1000")
                 .transform(simple("hello world"))
                 .to("spring-rabbitmq:test");
